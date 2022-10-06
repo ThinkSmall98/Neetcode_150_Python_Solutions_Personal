@@ -8,14 +8,11 @@
 class Solution:
     # Time: O(N) where N = num of nodes in BST, Space: O(1)
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        p_val, q_val = p.val, q.val
         node = root
         while node:
-            parent_val = node.val
-            if p_val > parent_val and q_val > parent_val:
+            if p.val > node.val and q.val > node.val:
                 node = node.right
-            elif p_val < parent_val and q_val < parent_val:
+            elif p.val < node.val and q.val < node.val:
                 node = node.left
             else:
                 return node
-        
