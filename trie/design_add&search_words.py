@@ -18,7 +18,8 @@ class WordDictionary:
             cur = cur.children[c]
         cur.word = True
 
-    #Time: O(m) for words w/o dots, O(n * 26^m) for words with dots, Space: O(n) where n = # of keys, m = key len
+    # Time: O(m) for words w/o dots, O(n * 26^m) for words with dots
+    # Space: O(n) where n = # of keys, m = key len
     def search(self, word: str) -> bool:
         if len(word) > self.max_word_len:
             return False
