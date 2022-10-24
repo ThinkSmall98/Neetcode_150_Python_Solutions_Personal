@@ -1,4 +1,6 @@
 # Time: O(N*log(N) + M*log(k)) where N = len of nums & M = # of calls to add() 
+# 1st half: constructor, 2nd half: add()
+# Space: O(N)
 
 from heapq import heapify, heappop, heappush
 class KthLargest:
