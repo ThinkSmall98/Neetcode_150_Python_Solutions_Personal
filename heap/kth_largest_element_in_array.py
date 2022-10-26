@@ -10,7 +10,7 @@
 #             k -= 1
 #         return res * -1
         
-# Time: O(n) avg, O(n^2) worst, Space: O(k)
+# Time: O(n) avg, O(n^2) worst, Space: O(1)
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         index = len(nums) - k
