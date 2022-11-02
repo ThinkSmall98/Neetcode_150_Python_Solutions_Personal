@@ -3,17 +3,16 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         res = []
-        
-        # base case
-        if len(nums) == 1:
-            return [nums[:]] # deep copy 
-        
-        for i in range(len(nums)):
-            n = nums.pop(0)
-            perms = self.permute(nums)
-            for perm in perms:
-                perm.append(n)
-            res.extend(perms)
-            nums.append(n)
+        n = len(nums)
+        def backtrack(first):
+            if first == n:
+                res.append(nums[:])
+            for i in range(first, n):
+                nums[first], nums[i] = nums[i], nums[first]
+                backtrack(first + 1)
+                # backtrack
+                nums[first], nums[i] = nums[i], nums[first]
+        backtrack(0)
         return res
+        
         
