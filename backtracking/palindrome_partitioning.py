@@ -12,13 +12,12 @@ class Solution:
 
         def dfs(i):
             if i >= len(s):
-                res.append(part[:])
+                res.append(part[:]) # deep copy
                 return
             for j in range(i, len(s)):
                 if self.isPali(s, i, j):
-                    part.append(s[i : j + 1])
-                    dfs(j + 1)
+                    part.append(s[i: j + 1])
+                    dfs(j + 1) # want to do j, not i
                     part.pop()
-
         dfs(0)
         return res
