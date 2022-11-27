@@ -6,6 +6,6 @@ class Solution:
         curMax, curMin = 1, 1
 
         for n in nums:
-            curMax, curMin = max(n * curMax, n * curMin, n), min(n * curMax, n * curMin, n)
+            curMax, curMin = max(n * curMax, n * curMin, n), min(n * curMax, n * curMin, n) # need n in case min/max = 0
             res = max(res, curMax)
         return res
