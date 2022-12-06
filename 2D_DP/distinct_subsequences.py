@@ -25,19 +25,18 @@ class Solution:
     # Space: O(m * n)
     def numDistinct(self, s: str, t: str) -> int:
         ROWS, COLS = len(s) + 1, len(t) + 1
+        dp = [[0] * COLS for _ in range(ROWS)] 
 
-        dp = [[0] * COLS for _ in range(ROWS)]
+        for i in range(ROWS): # empty t which means s can match it at least once
+            dp[i][-1] = 1
 
-        for i in range(ROWS):
-            dp[i][0] = 1
+        for r in range(ROWS - 2, -1, -1):
+            for c in range(COLS - 2, -1, -1):
+                dp[r][c] = dp[r + 1][c]
 
-        for i in range(1, ROWS):
-            for j in range(1, COLS):
-                dp[i][j] = dp[i - 1][j]
-
-                if s[i - 1] == t[j - 1]: # Need to get prev values
-                    dp[i][j] += dp[i - 1][j - 1]
-        return dp[-1][-1]
+                if s[r] == t[c]:
+                    dp[r][c] += dp[r + 1][c + 1]
+        return dp[0][0]
         
     # 1D dp
     # Time: O(m * n)
