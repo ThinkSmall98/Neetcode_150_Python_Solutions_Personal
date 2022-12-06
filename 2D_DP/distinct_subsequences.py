@@ -42,6 +42,23 @@ class Solution:
     # Time: O(m * n)
     # Space: O(n)
     def numDistinct(self, s: str, t: str) -> int:
+        ROWS, COLS = len(s), len(t)
+        dp = [0] * COLS
+
+        for i in range(ROWS - 1, -1, -1):
+            prev = 1
+            for j in range(COLS - 1, -1, -1):
+                old_dp_j = dp[j]
+                if s[i] == t[j]: # Need to get prev values
+                    dp[j] += prev
+                prev = old_dp_j
+        return dp[0]    
+        
+        
+    # 1D dp
+    # Time: O(m * n)
+    # Space: O(n)
+    def numDistinct(self, s: str, t: str) -> int:
         ROWS, COLS = len(s) + 1, len(t) + 1
 
         dp = [0] * COLS
