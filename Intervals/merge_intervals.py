@@ -2,7 +2,7 @@
 # Space: O(n)
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        intervals.sort(key = lambda interval: interval[0])
+        intervals.sort()
         output = [intervals[0]]
         for start, end in intervals[1:]:
             lastEnd = output[-1][1]
