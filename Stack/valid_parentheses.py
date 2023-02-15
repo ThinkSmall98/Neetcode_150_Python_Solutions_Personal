@@ -16,3 +16,6 @@ class Solution(object):
                 stack.append(char)
         # True if stack is empty, False is stack isn't empty ((()
         return not stack
+'''
+Open/closed Parantheses must be next to each other
+'''
