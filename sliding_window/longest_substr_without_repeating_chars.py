@@ -14,7 +14,7 @@ class Solution:
         return res
 # reset set if there are repeating characters
 
-    # Time: O(2n) = O(n)
+    # Time: O(n)
     # Space: O(1)
     def lengthOfLongestSubstring(self, s: str) -> int:
         res = 0
