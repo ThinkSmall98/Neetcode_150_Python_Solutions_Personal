@@ -29,7 +29,7 @@ class Solution:
 
         left = 0
         for right in range(len(s1), len(s2)):
-            if matches == 26:
+            if matches == 26:  # break early if all matches
                 return True
                 
             index = ord(s2[right]) - ord('a')
