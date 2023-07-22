@@ -4,26 +4,28 @@ class Solution:
     # Space: O(len(t) + len(s))
     def minWindow(self, s: str, t: str) -> str:
         count_t = Counter(t)
-        res = [-1, -1]
+        interval = [-1, -1]
         min_len = float('inf')
         have, need = 0, len(count_t)
-        l = 0
-        window = {}
-        for r in range(len(s)):
-            char = s[r]
-            window[char] = window.get(char, 0) + 1
+        left = 0
+        count_s = {}
+        for right in range(len(s)):
+            count_s[s[right]] = 1 + count_s.get(s[right], 0)
 
-            if char in count_t and window[char] == count_t[char]:
+            if count_s[s[right]] == count_t.get(s[right], 0):
                 have += 1
+
             while have == need:
-                # update result
-                if (r - l + 1) < min_len:
-                    res = [l, r]
-                    min_len = r - l + 1
-                # pop from left of our window
-                window[s[l]] -= 1
-                if s[l] in count_t and window[s[l]] < count_t[s[l]]:
+                if right - left + 1 < min_len:
+                    interval = [left, right]
+                    min_len = right - left + 1
+                count_s[s[left]] -= 1
+                
+                if count_s[s[left]] < count_t.get(s[left], 0):
                     have -= 1
-                l += 1
-        l, r = res
-        return s[l : r + 1] if min_len != float('inf') else ''
+                left += 1
+        
+        left, right = interval
+        return s[left:right + 1] if min_len !=  float('inf') else ''
+
+# check that keys exist first
