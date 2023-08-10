@@ -3,10 +3,9 @@ class Solution:
   # Space: O(n)
     def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
         pair = [[p, s] for p, s in zip(position, speed)]
-        stack = []
-        for p,s in sorted(pair)[::-1]: # reverse sorted order
-            stack.append((target - p)/s)
+        stack = [] # time
+        for p, s in sorted(pair)[::-1]: # sort the positions & go from right to left
+            stack.append((target - p)/ s)
             if len(stack) > 1 and stack[-1] <= stack[-2]:
                 stack.pop()
-
         return len(stack)
