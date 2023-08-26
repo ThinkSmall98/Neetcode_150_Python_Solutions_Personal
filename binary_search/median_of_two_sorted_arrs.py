@@ -6,7 +6,7 @@ class Solution:
         m, n = len(nums1), len(nums2)
 
         if n < m:
-            return self.findMedianSortedArrays(nums2, nums1)
+            return self.findMedianSortedArrays(nums2, nums1) # switch so nums1 is smaller
             
         l, r = 0, m
         while l <= r: 
