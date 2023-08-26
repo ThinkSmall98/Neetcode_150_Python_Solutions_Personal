@@ -11,7 +11,7 @@ class Solution:
         l, r = 0, m
         while l <= r: 
             i = l + ((r - l) // 2) # A
-            j = (m + n + 1)// 2 - i # + 1 bc we are rounding down in the earlier one
+            j = (m + n + 1)// 2 - i  # + 1 bc we want to account for odd & even number of elements
 
             A_left = float("-inf") if i == 0 else A[i-1]
             A_right = float("inf") if i == m else A[i]
