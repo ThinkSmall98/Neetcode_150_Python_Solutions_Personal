@@ -11,14 +11,14 @@ class Solution:
         l, r = 0, m
         while l <= r: 
             i = l + ((r - l) // 2) # A
-            j = (m + n + 1)// 2 - i
+            j = (m + n + 1)// 2 - i # + 1 bc we are rounding down in the earlier one
 
             A_left = float("-inf") if i == 0 else A[i-1]
             A_right = float("inf") if i == m else A[i]
             B_left = float("-inf") if j == 0 else B[j-1]
             B_right = float("inf") if j == n else B[j]
 
-            # partition is correct
+            # if partition is right, left values of A & B <= right values of B & A
             if A_left <= B_right and B_left <= A_right:
                 # even
                 if (m + n) % 2 == 0:
