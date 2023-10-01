@@ -1,5 +1,5 @@
 class Solution:
-    # Time: O(n)
+    # Time: O(n * log(n))
     # Space: O(1)
     def twoSum(self, nums: List[int], i: int, target: int) -> int:
         left, right = i + 1, len(nums) - 1
