@@ -56,10 +56,10 @@ from collections import Counter
     def findPermutation(self, s1, s2):
         n1, n2 = len(s1), len(s2)
         pattern_dict = Counter(pattern)
-        substr_dict = Counter(str1[:n1])
+        substr_dict = Counter(s2[:n1])
         for i in range(n1, n2):
           if pattern_dict - substr_dict == {}:
             return True
-          substr_dict[str1[i - n1]] -= 1
-          substr_dict[str1[i]] += 1
+          substr_dict[s2[i - n1]] -= 1
+          substr_dict[s2[i]] += 1
         return pattern_dict - substr_dict == {}
