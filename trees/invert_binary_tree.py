@@ -38,4 +38,21 @@ class Solution:
             if current.right:
                 queue.append(current.right)
         return root
+# can also get rid of deque & just use list
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root: 
+            return None
+
+        queue = [root]
+        while queue:
+            # get current node
+            current = queue.pop()
+            # swap left & right nodes
+            current.left, current.right = current.right, current.left
+            # check left & right nodes under current node & append to queue if exists
+            if current.left:
+                queue.append(current.left)
+            if current.right:
+                queue.append(current.right)
+        return root
 
