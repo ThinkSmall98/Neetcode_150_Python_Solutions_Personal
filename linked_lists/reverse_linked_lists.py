@@ -8,6 +8,9 @@ class Solution:
     # Time: O(n)
     # Space: O(1)
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        '''
+        Create 3 nodes: prev, curr, & temp
+        '''
         prev = None
         curr = head
         while curr:
