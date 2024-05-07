@@ -14,8 +14,6 @@ class Solution:
             right_balanced, right_h = dfs(root.right)
             current_balanced = (left_balanced and right_balanced and 
                             abs(left_h - right_h) <= 1)
-            if not current_balanced:
-                return (False, 0)
-            return (True, 1 + max(left_h, right_h))
+            return (current_balanced, 1 + max(left_h, right_h))
         return dfs(root)[0]
 
