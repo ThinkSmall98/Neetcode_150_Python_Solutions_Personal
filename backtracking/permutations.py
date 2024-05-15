@@ -3,16 +3,16 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         res = []
-        n = len(nums)
-        def backtrack(first):
-            if first == n:
-                res.append(nums[:])
-            for i in range(first, n):
-                nums[first], nums[i] = nums[i], nums[first]
-                backtrack(first + 1)
-                # backtrack
-                nums[first], nums[i] = nums[i], nums[first]
-        backtrack(0)
+        def dfs(arr):
+            if len(arr) == len(nums):
+                res.append(arr.copy())
+                return
+            for num in nums:
+                if num not in arr:
+                    arr.append(num)
+                    dfs(arr)
+                    arr.pop()
+                    # don't need to do dfs again bc we have to keep a certain num of elements in arr
+        dfs([])
         return res
-        
         
