@@ -8,7 +8,7 @@ class Solution:
             if total == target:
                 res.append(cur.copy())
                 return
-            if i >= len(candidates) or target < total:
+            if i == len(candidates) or target < total:
                 return
             cur.append(candidates[i])
             dfs(i, cur, total + candidates[i])
