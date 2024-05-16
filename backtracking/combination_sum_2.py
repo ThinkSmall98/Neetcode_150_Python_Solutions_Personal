@@ -2,19 +2,28 @@
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         candidates.sort()
+
         res = []
 
-        def backtrack(comb, remain, pos):
-            if remain == 0:
-                res.append(comb[:]) # return shallow copy
+        def backtrack(cur, pos, target):
+            if target == 0:
+                res.append(cur.copy())
                 return
+            if target <= 0:
+                return
+
+            prev = -1
             for i in range(pos, len(candidates)):
-                if i > pos and candidates[i] == candidates[i - 1]:
+                if candidates[i] == prev:
                     continue
-                if remain < candidates[i]: # optimize by stopping when exceeding remaining val
+                # If candidates[i] > target it will never be a valid combo
+                if target < candidates[i]:
                     break
-                comb.append(candidates[i])
-                backtrack(comb, remain - candidates[i], i + 1)
-                comb.pop()
-        backtrack([], target, 0)
+                cur.append(candidates[i])
+                backtrack(cur, i + 1, target - candidates[i])
+                cur.pop()
+                prev = candidates[i]
+
+        backtrack([], 0, target)
         return res
+
