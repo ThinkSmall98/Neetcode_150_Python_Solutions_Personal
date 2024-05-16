@@ -6,7 +6,7 @@ class Solution:
 
         def backtrack(comb, remain, pos):
             if remain == 0:
-                res.append(comb[:]) # return deep copy
+                res.append(comb[:]) # return shallow copy
                 return
             for i in range(pos, len(candidates)):
                 if i > pos and candidates[i] == candidates[i - 1]:
