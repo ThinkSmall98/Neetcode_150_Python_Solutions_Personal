@@ -5,11 +5,11 @@ class Solution:
 
         res = []
 
-        def dfs(pos, arr, target):
-            if target == 0:
+        def dfs(pos, arr, remaining):
+            if remaining == 0:
                 res.append(arr.copy())
                 return
-            if target <= 0:
+            if remaining <= 0:
                 return
 
             prev = -1
@@ -17,13 +17,14 @@ class Solution:
                 if candidates[i] == prev:
                     continue
                 # If candidates[i] > target it will never be a valid combo
-                if target < candidates[i]:
+                if remaining < candidates[i]:
                     break
                 arr.append(candidates[i])
-                dfs(i + 1, arr, target - candidates[i])
+                dfs(i + 1, arr, remaining - candidates[i])
                 arr.pop()
                 prev = candidates[i]
 
         dfs(0, [], target)
         return res
+
 
