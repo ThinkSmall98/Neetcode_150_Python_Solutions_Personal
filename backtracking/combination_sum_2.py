@@ -5,9 +5,9 @@ class Solution:
 
         res = []
 
-        def backtrack(cur, pos, target):
+        def dfs(pos, arr, target):
             if target == 0:
-                res.append(cur.copy())
+                res.append(arr.copy())
                 return
             if target <= 0:
                 return
@@ -19,11 +19,11 @@ class Solution:
                 # If candidates[i] > target it will never be a valid combo
                 if target < candidates[i]:
                     break
-                cur.append(candidates[i])
-                backtrack(cur, i + 1, target - candidates[i])
-                cur.pop()
+                arr.append(candidates[i])
+                dfs(i + 1, arr, target - candidates[i])
+                arr.pop()
                 prev = candidates[i]
 
-        backtrack([], 0, target)
+        dfs(0, [], target)
         return res
 
