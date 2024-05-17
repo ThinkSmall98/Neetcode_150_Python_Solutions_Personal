@@ -11,7 +11,7 @@ class Solution:
                 return
             if remaining <= 0:
                 return
-
+            # keep track of prev num
             prev = -1
             for i in range(pos, len(candidates)):
                 if candidates[i] == prev:
