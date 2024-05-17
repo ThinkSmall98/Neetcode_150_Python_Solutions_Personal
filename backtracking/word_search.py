@@ -4,31 +4,30 @@ from collections import Counter, defaultdict
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         ROWS, COLS = len(board), len(board[0])
-        path = set() # (x, y)
+        path = set() # (r, c) 
 
         def dfs(r, c, i):
-            # there's a full match!
             if i == len(word):
                 return True
-            if (r >= ROWS or c >= COLS or 
-                (r, c) in path or
+            if (r >= ROWS or c >= COLS or
+                (r, c) in path or 
                 word[i] != board[r][c] or
                 min(r, c) < 0):
                 return False
             path.add((r, c))
-            res = (dfs(r + 1, c, i + 1) or
-                    dfs(r - 1, c, i + 1) or
-                    dfs(r, c + 1, i + 1) or
-                    dfs(r, c - 1, i + 1) )
+            res = (dfs(r + 1, c, i + 1) or 
+                    dfs(r - 1, c, i + 1) or 
+                    dfs(r, c - 1, i + 1) or 
+                    dfs(r, c + 1, i + 1)
+                  )
             path.remove((r, c)) # backtrack
-            return res
-        # Optimize: reverse word if freq of 1st letter greater than last letter
-        count = defaultdict(int, sum(map(Counter, board), Counter()))
-        if count[word[0]] > count[word[-1]]:
-            word = word[::-1]
-        for row in range(ROWS):
-            for col in range(COLS):
-                if dfs(row, col, 0):
+            return res 
+        # reverse string if freq of 1st letter greater than last let
+        count = Counter(letter for row in board for letter in row)
+        if count[0] > count[-1]:
+            count = count[::-1]
+        for r in range(ROWS):
+            for c in range(COLS):
+                if dfs(r, c, 0):
                     return True
         return False
-
