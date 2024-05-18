@@ -2,16 +2,22 @@
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
         res = []
-        numToChar = {"2":"abc", "3":"def","4": "ghi", "5": "jkl",
-                    "6": "mno", "7": 'pqrs', '8': 'tuv', '9':'wxyz'}
-        def backtrack(i, path):
-            if len(path) == len(digits):
-                res.append("".join(path))
+        path = []
+
+        numToChar = {2: 'abc', 3: 'def', 4: 'ghi',
+                    5:'jkl', 6: 'mno', 7: 'pqrs', 
+                    8: 'tuv', 9: 'wxyz'}
+
+        def dfs(i):
+            if i == len(digits):
+                res.append(''.join(path))
                 return
-            for c in numToChar[digits[i]]:
-                path.append(c)
-                backtrack(i + 1, path)
+            for char in numToChar[int(digits[i])]:
+                path.append(char)
+                dfs(i + 1)
                 path.pop()
+
         if digits:
-            backtrack(0, [])
+            dfs(0)
+
         return res
