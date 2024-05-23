@@ -33,4 +33,5 @@ class Solution:
  '''
  1. Initialize queue with gates
  2. Do BFS and keep a var. dist to find dist of gates
+ 3. Rewrite rooms array with dist values
  '''
