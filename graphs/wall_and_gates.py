@@ -17,7 +17,8 @@ class Solution:
                     visited.add((r,c))
         dist = 0
         while q:
-            for i in range(len(q)):
+            # go thru each level of the queue
+            for _ in range(len(q)): 
                 row, col = q.popleft()
                 rooms[row][col] = dist
                 for dr, dc in ((1,0), (-1,0),(0,1),(0,-1)):
