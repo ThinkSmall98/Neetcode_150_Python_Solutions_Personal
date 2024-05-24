@@ -1,4 +1,5 @@
 # Time: O(E + V), E = edges & V = vertices, Space: O(E + V)
+# Topological sort
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
         preMap = {i: [] for i in range(numCourses)}
