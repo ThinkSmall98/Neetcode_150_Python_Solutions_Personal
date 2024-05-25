@@ -10,29 +10,27 @@ class Solution:
         parent = [i for i in range(n)]
         rank = [1] * n
 
-        def find_root_parent(n):
-            res = n
-            while res != parent[res]:
-                # path compression: set parent equal to grandparent
-                parent[res] = parent[parent[res]]
-                res = parent[res]
-            return res
+        def findRootParent(n):
+            while n != parent[n]:
+                parent[n] = parent[parent[n]]
+                n = parent[n]
+            return n
 
         def union(n1, n2):
-            p1, p2 = find_root_parent(n1), find_root_parent(n2)
-            # Same parent
+            p1, p2 = findRootParent(n1), findRootParent(n2)
             if p1 == p2:
                 return 0
-            # p1 is parent of p2
-            if rank[p1] > rank[p2]:
+            elif rank[p1] > rank[p2]: # p1 is parent of p2
                 parent[p2] = p1
                 rank[p1] += rank[p2]
-            # p2 is parent of p1
-            else:
+            else: # p2 is parent of p1
                 parent[p1] = p2
                 rank[p2] += rank[p1]
             return 1
+
         res = n
         for n1, n2 in edges:
             res -= union(n1, n2)
         return res
+
+
