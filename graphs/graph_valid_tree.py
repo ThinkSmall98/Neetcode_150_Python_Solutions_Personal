@@ -1,6 +1,7 @@
 # Time: O(E + V), Space: O(E + V)
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        # make adjacency list
         adj = {i: [] for i in range(n)}
         for n1, n2 in edges:
             adj[n1].append(n2)
