@@ -24,3 +24,5 @@ class Solution:
         for n1, n2 in edges:
             if not union(n1,n2):
                 return [n1,n2]
+
+# If we have n nodes & n edges, we will have cycle no matter what. Use union-find algorithm
