@@ -16,7 +16,7 @@ class Solution:
             dfs(i, arr, curr_sum + candidates[i])
             # pop candidates[i]
             arr.pop()
-            # for all backtracking problems: only do this when we can have dupes of this number
+            # for all backtracking problems: when you don't need to include every value in input arr
             dfs(i + 1, arr, curr_sum)
         dfs(0, [], 0)
         return res
