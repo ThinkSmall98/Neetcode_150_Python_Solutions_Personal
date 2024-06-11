@@ -16,7 +16,7 @@ class Solution:
             dfs(i, arr, curr_sum + candidates[i])
             # pop candidates[i]
             arr.pop()
+            # only do this when we don't want to use this number
             dfs(i + 1, arr, curr_sum)
         dfs(0, [], 0)
         return res
-        
