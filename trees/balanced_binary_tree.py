@@ -9,7 +9,7 @@ class Solution:
         # sub-function to find if balanced & height
         def dfs(root): # return bool, height of tree
             if not root:
-                return (True, 0)
+                return (True, 0) # reached end of tree (null node)
             left_balanced, left_h = dfs(root.left)
             right_balanced, right_h = dfs(root.right)
             current_balanced = (left_balanced and right_balanced and 
