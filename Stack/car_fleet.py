@@ -9,3 +9,10 @@ class Solution:
             if len(stack) > 1 and stack[-1] <= stack[-2]:
                 stack.pop()
         return len(stack)
+'''
+1. Zip positions & speed into it's own list
+2. Keep a stack of time
+3. Iterate thru each pair and append times to stack
+4. Pop from stack if the last value <= 2nd to last value
+5. Return len of stack
+'''
