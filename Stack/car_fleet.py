@@ -12,7 +12,8 @@ class Solution:
 '''
 1. Zip positions & speed into it's own list
 2. Keep a stack of time
-3. Iterate thru each pair and append times to stack
-4. Pop from stack if the last value <= 2nd to last value
-5. Return len of stack
+3. Sort position from biggest to smallest.
+4. Iterate thru each pair and append times to stack
+5. Pop from stack if the last value <= 2nd to last value
+6. Return len of stack
 '''
