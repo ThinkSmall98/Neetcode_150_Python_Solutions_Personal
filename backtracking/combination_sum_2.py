@@ -9,7 +9,7 @@ class Solution:
             if remaining == 0:
                 res.append(arr.copy())
                 return
-            if remaining <= 0:
+            if remaining < 0:
                 return
             # keep track of prev num
             prev = -1
