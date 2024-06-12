@@ -17,7 +17,7 @@ class Solution:
         q = deque([beginWord])
         res = 1
         while q:
-            for i in range(len(q)):
+            for _ in range(len(q)):
                 word = q.popleft()
                 if word == endWord:
                     return res
