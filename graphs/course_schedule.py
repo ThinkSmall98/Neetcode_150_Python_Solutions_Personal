@@ -5,18 +5,18 @@ class Solution:
         preMap = {i: [] for i in range(numCourses)}
         for course, prereq in prerequisites:
             preMap[course].append(prereq)
-        visited = set()
+        cycle = set()
 
         def dfs(course):
-            if course in visited:
+            if course in cycle:
                 return False
             if preMap[course] == []:
                 return True
-            visited.add(course)
+            cycle.add(course)
             for prereq in preMap[course]:
                 if not dfs(prereq):
                     return False
-            visited.remove(course)
+            cycle.remove(course)
             # set to empty arr bc we already know the prereqs are met
             preMap[course] = []
             return True
