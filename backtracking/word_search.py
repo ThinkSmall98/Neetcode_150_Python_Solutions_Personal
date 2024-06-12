@@ -4,24 +4,24 @@ from collections import Counter, defaultdict
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         ROWS, COLS = len(board), len(board[0])
-        path = set() # (r, c)
+        seen = set() # (r, c)
 
         def dfs(i, r, c):
             if i == len(word):
                 return True
             if (r >= ROWS or c >= COLS or
-                (r,c) in path or 
+                (r,c) in seen or 
                 word[i] != board[r][c] or
                 min(r, c) < 0):
                 return False
-            # add (r, c) in path
-            path.add((r,c))
+            # add (r, c) in seen
+            seen.add((r,c))
             res = (dfs(i + 1, r + 1, c) or 
                     dfs(i + 1, r - 1, c) or 
                     dfs(i + 1, r, c + 1) or 
                     dfs(i + 1, r, c - 1) )
-            # remove (r, c) from path
-            path.remove((r, c))
+            # remove (r, c) from seen
+            seen.remove((r, c))
 
             return res
         # reverse string if freq of 1st letter > last letter
