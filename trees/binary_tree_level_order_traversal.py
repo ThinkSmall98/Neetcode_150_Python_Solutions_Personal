@@ -4,7 +4,29 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# BFS
+from collections import deque
+
 class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        res = []
+        q = deque()
+        if root:
+            q.append(root)
+        while q:
+            row = []
+            for _ in range(len(q)):
+                node = q.popleft()
+                row.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            res.append(row)
+        return res
+
+    # DFS
     # Time: O(n), Space: O(n)
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         levels = []
