@@ -14,3 +14,8 @@ class Solution:
         # don't count root_i in inorder list
         root.right = self.buildTree(preorder[root_i + 1:], inorder[root_i + 1 : ]) 
         return root
+
+'''
+Preorder = by level
+Inorder = by lower left all the way through the edges to lower right
+'''
