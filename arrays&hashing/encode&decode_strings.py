@@ -1,29 +1,25 @@
-class Codec:
-    # Time: O(n)
+class Solution:
+    # Put number and then _ after to represent length of each word
+    # Time: O(n) where n = len(strs)
     # Space: O(1)
     def encode(self, strs: List[str]) -> str:
-        """Encodes a list of strings to a single string.
-        """
-        res = ''
+        s = ''
         for string in strs:
-            str_len = len(string)
-            if str_len < 10:
-                str_len = '00' + str(str_len)
-            elif str_len < 100:
-                str_len = '0' + str(str_len)
-            else:
-                str_len = str(str_len)
-            res += str_len + string
-        return res
+            len_string = len(string)
+            s += f'{len_string}_{string}'
+        return s
 
+    # Time: O(m) where m = sum(len of all strs)
+    # Space: O(1) (don't count res in space complexity)
     def decode(self, s: str) -> List[str]:
-        """Decodes a single string to a list of strings.
-        """
-        res = []
         i = 0
+        res = []
         while i < len(s):
-            length = int(s[i:i + 3])
-            word = s[i + 3: i + 3 + length]
-            res.append(word)
-            i += 3 + length
+            j = i + 1
+            while s[j] != '_': # need to see if strs[i] is 2 or 3
+                j += 1
+            len_string = int(s[i: j])
+            j += 1 # move 
+            res.append(s[j: j + len_string])
+            i = j + len_string
         return res
